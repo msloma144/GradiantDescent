@@ -1,8 +1,7 @@
-import numpy as np
-import BatchGradiantDescent
-import StochasticGradiantDescent
 import ImportData
+import numpy as np
 
+from src import BatchGradiantDescent
 
 inputmatrix, outputmatrix = ImportData.inputfile('1985.Auto.Imports.Database.data.refined.1var.csv')
 
