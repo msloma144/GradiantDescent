@@ -3,7 +3,7 @@ import numpy as np
 
 from src import BatchGradiantDescent
 
-inputmatrix, outputmatrix = ImportData.inputfile('1985.Auto.Imports.Database.data.refined.1var.csv')
+inputmatrix, outputmatrix = ImportData.inputfile('data/Auto.Imports/1985.Auto.Imports.Database.data.refined.1var.csv')
 
 parameters = np.ones((2, 1))
 
