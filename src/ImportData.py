@@ -66,5 +66,4 @@ def inputfile(filename):
     inputmaxtrix = examplecleanup(inputmaxtrix, unknownvals)
     outputmatrix = examplecleanup(outputmatrix, unknownvals)
     infile.close()  # close the file
-    print(inputmaxtrix)
     return inputmaxtrix, outputmatrix
