@@ -12,7 +12,7 @@ def getnumoffeaturres(filename):
 
 
 def getnumofexamples(filename):
-    # find the number of examples in the dataset
+    # find the number of examples in the data set
     infile = open(filename)
     examples = sum(1 for line in infile)
     infile.close()
@@ -39,9 +39,11 @@ def inputfile(filename):
 
     examplecounter = 0  # counter of the number of examples to place row in correct place
     for line in itrinfile:  # for the lines in open file
+
         temparray = np.zeros(numoffeatures)  # fill temp array with zeros
         featurecounter = 0  # set feature counter back to zero
         number = ""  # initialize number as empty, used to keep track of input
+
         for char in line:  # for characters in each line
             if char is "?":  # if char is ? then dump the example for clean up later
                 temparray = np.zeros(numoffeatures)
@@ -50,7 +52,7 @@ def inputfile(filename):
             elif (char != ",") and (not char.isspace()):  # char is not a , and is not white space
                 number += char  # add char to the number
             else:
-                if featurecounter == 1:  # if the feature is the last one in the set then assign it to output
+                if featurecounter == numoffeatures:  # if the feature is the last one in the set then assign it to output
                     outputmatrix[examplecounter] = float(number)
                 else:
                     temparray[featurecounter] = float(number)  # set the index of array to the value of that input
@@ -64,5 +66,5 @@ def inputfile(filename):
     inputmaxtrix = examplecleanup(inputmaxtrix, unknownvals)
     outputmatrix = examplecleanup(outputmatrix, unknownvals)
     infile.close()  # close the file
+    print(inputmaxtrix)
     return inputmaxtrix, outputmatrix
-

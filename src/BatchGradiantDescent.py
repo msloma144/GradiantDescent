@@ -48,18 +48,26 @@ def gradiantdescentiteration(inputmatrix, outputs, parameters, iterations):
 
 
 def gradientdescentmatrix(inputmatrix, outputs, numIterations):
-    learningrate = .01
+    learningrate = .001
     numofsamples = inputmatrix.shape[0]  # number of samples
     numoffeatures = inputmatrix.shape[1]
     parameters = np.ones((numoffeatures, 1))
+
+    errorfinal = 0
 
     for i in range(0, numIterations):
         # parameter update
         hypothesis = np.dot(inputmatrix, parameters)
         error = hypothesis - outputs
         sumofsquares = np.sum(error ** 2) / (2 * numofsamples)  # sum of squares error
-        print("Cycle: %s | SOS Error: %.5f" % (i, sumofsquares))
+        errorinital = sumofsquares
+
+        if abs(errorfinal - float(errorinital)) < .000001:  # if error is low, stop
+            break
+
+        #print("Cycle: %s | SOS Error: %.5f" % (i, sumofsquares))
         gradient = np.dot(np.transpose(inputmatrix), error) / numofsamples
         parameters -= learningrate * gradient  # update parameters
-    print(parameters)
+        errorfinal = errorinital
+    #print(parameters)
 

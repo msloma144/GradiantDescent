@@ -9,9 +9,9 @@ parameters = np.ones((2, 1))
 
 inputmatrix = np.c_[np.ones(203), inputmatrix]  # insert column of ones for param naught
 
-BatchGradiantDescent.gradiantdescentiteration(inputmatrix, outputmatrix, parameters, 10000)
+#BatchGradiantDescent.gradiantdescentiteration(inputmatrix, outputmatrix, parameters, 10000)
 
-#BatchGradiantDescent.gradientdescentmatrix(inputmatrix, outputmatrix, 100)
+BatchGradiantDescent.gradientdescentmatrix(inputmatrix, outputmatrix, 100)
 
 #StochasticGradiantDescent.gradiantdecentiteration(inputmatrix, outputmatrix, 10000)
 
