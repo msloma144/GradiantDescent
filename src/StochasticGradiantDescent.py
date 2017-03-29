@@ -1,5 +1,7 @@
 import numpy as np
 
+# Stochastic gradient descent implementation
+
 
 def gradiantdecentiteration(inputmatrix, outputs, iterations):
     numofsamples = inputmatrix.shape[0]
@@ -24,7 +26,8 @@ def gradiantdecentiteration(inputmatrix, outputs, iterations):
                 gradient = (inputrow[i] * error) / numofsamples
                 parameters[i] -= learningrate * gradient
 
-    print(parameters)
+    #print(parameters)
+    return parameters
 
 
 def gradiantdecentmatrix(inputmatrix, outputs, iterations):
@@ -47,4 +50,5 @@ def gradiantdecentmatrix(inputmatrix, outputs, iterations):
             gradient = (np.transpose(inputrow.reshape((1, numoffeatures))) * error) / numofsamples
             parameters -= learningrate * gradient  # update parameters
 
-    print(parameters)
+    #print(parameters)
+    return parameters

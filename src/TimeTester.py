@@ -3,11 +3,13 @@ import time
 from src import BatchGradiantDescent
 import matplotlib.pyplot as plt
 
+# A tester file to find out at what point is gradient descent faster than
+# solving the normal equation to find the parameters
+
 
 def closedformregession(inputs, outputs):
     xtran = np.transpose(inputs)
     xTx = np.dot(xtran, inputs)
-    xTxinv = None
     xTxinv = np.linalg.pinv(xTx)
     xTy = np.dot(xtran, outputs)
     params = np.dot(xTxinv, xTy)
@@ -15,7 +17,7 @@ def closedformregession(inputs, outputs):
 
 
 def runGradiant(inputs, outputs):
-    BatchGradiantDescent.gradientdescentmatrix(inputs, outputs, 1000000)
+    BatchGradiantDescent.gradientdescentmatrix(inputs, outputs, 10000000, False)
 
 
 def runClosed(inputs, outputs):
@@ -24,17 +26,17 @@ def runClosed(inputs, outputs):
 
 def graph(size, m1, m2):
     plt.plot(size, m1, 'bs', size, m2, 'ro')
-    #plt.plot(size, m1, 'bs')
+    # plt.plot(size, m1, 'bs')
     plt.show()
 
 
-fulltest = 1000000000
-#test = np.arange(1, 1000, 100)
-test = [10000]
+test = np.arange(1, 1500, 100)
+#test = [9500]
 size = []
 gradianttime = []
 closedtime = []
 prgmstart = time.time()
+
 for i in test:
     size.append(i)
     inputs = np.random.rand(i, i)
@@ -58,5 +60,5 @@ for i in test:
 
     print("Iteration: " + str(i))
     print("Runtime: " + str(time.time() - prgmstart))
-    graph(size, gradianttime, closedtime)
+graph(size, gradianttime, closedtime)
 

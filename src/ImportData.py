@@ -1,5 +1,9 @@
 import numpy as np
 
+# A set of methods that takes in data from a comma delineated file and imports it into
+# a numpy array in preparation for computation. This implementation also strips out any data
+# with unknown data points.
+
 
 def getnumoffeaturres(filename):
     # find the number of features using the first line of data
@@ -66,4 +70,5 @@ def inputfile(filename):
     inputmaxtrix = examplecleanup(inputmaxtrix, unknownvals)
     outputmatrix = examplecleanup(outputmatrix, unknownvals)
     infile.close()  # close the file
+
     return inputmaxtrix, outputmatrix
